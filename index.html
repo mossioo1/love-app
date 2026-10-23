@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#160e24">
+<title>دوستم داری؟ ❤️</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;overflow:hidden;padding:22px;font-family:Tahoma,Arial,sans-serif;color:#fff5fb;background:radial-gradient(ellipse at top,#482044,transparent 60%),linear-gradient(145deg,#100b1b,#24142f)}
+.hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.heart{position:absolute;bottom:-30px;color:#ff8fc7;animation:float 12s linear infinite;opacity:0}
+@keyframes float{15%{opacity:.6}100%{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+.card{position:relative;width:min(100%,390px);padding:35px 24px;text-align:center;border:1px solid #ffffff25;border-radius:28px;background:#ffffff0c;backdrop-filter:blur(15px);box-shadow:0 25px 80px #0005;animation:in .7s ease}
+@keyframes in{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.symbol{font-size:48px;margin-bottom:16px}
+h1{font-size:29px;line-height:1.7;margin:0 0 12px}
+p{font-size:14px;color:#e5d3e9;line-height:2}
+.gradient{background:linear-gradient(100deg,#ffd1e8,#ff75b5,#c4b5fd);background-clip:text;-webkit-background-clip:text;color:transparent}
+button{font-family:inherit;font-weight:bold;font-size:16px;cursor:pointer;touch-action:manipulation;transition:transform .35s,opacity .25s}
+.start,.yes{width:100%;min-height:54px;border:0;border-radius:16px;color:#281326;background:linear-gradient(110deg,#ffacd4,#ff70ad,#d7a7ff);box-shadow:0 8px 28px #ff75b533}
+.buttons{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:25px}
+.no{padding:13px 28px;border:1px solid #ffffff35;border-radius:15px;background:#ffffff0b;color:white;min-height:46px}
+.hint{min-height:24px;margin-top:22px;font-size:12px}
+.footer{margin-top:20px;font-size:10px;letter-spacing:2px;color:#cbb7d4}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+<main class="card" id="card">
+<div class="symbol" id="symbol">💌</div>
+<h1 id="title">یه سؤال <span class="gradient">برای تو</span></h1>
+<p id="desc">یه سورپرایز کوچولو دارم... آماده‌ای؟ ✨</p>
+<button class="start" id="start">شروع کنیم ❤️</button>
+<div class="buttons hidden" id="buttons">
+<button class="yes" id="yes">آره 😍</button>
+<button class="no" id="no">نه 🙃</button>
+</div>
+<p class="hint" id="hint">ساخته‌شده با کمی عشق و کلی ذوق ✨</p>
+<div class="footer">A LITTLE MOMENT OF LOVE ♡</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+let count=0,finished=false;
+for(let i=0;i<18;i++){let h=document.createElement('span');h.className='heart';h.textContent=['♡','♥','✧'][i%3];h.style.left=Math.random()*100+'%';h.style.fontSize=(14+Math.random()*18)+'px';h.style.animationDuration=(9+Math.random()*12)+'s';h.style.animationDelay=(-Math.random()*18)+'s';$('hearts').appendChild(h)}
+$('start').onclick=()=>{
+$('start').classList.add('hidden');$('buttons').classList.remove('hidden');
+$('title').innerHTML='دوستم داری؟ <span class="gradient">🥹❤️</span>';
+$('desc').textContent='راستشو بگو... جواب قلبت چیه؟';$('symbol').textContent='💗';$('hint').textContent='یه جواب کوچولو منتظرمه...';
+};
+$('no').onclick=()=>{
+if(finished||count>=5)return;
+count++;$('yes').style.transform=`scale(${1+count*.24})`;
+$('yes').style.boxShadow=`0 8px ${28+count*7}px #ff75b555`;
+$('hint').textContent=['مطمئنی؟ یه بار دیگه فکر کن! 🥹','هنوزم می‌خوای نه رو بزنی؟ 🙈','قلب کوچولوم منتظر جوابته 💗','دیگه داری منو کنجکاو می‌کنی! 😂','حالا فقط یه انتخاب مونده! ❤️'][count-1];
+if(count===5)$('no').classList.add('hidden');
+};
+$('yes').onclick=()=>{
+if(finished)return;finished=true;$('buttons').classList.add('hidden');
+$('symbol').textContent='💖';$('title').innerHTML='<span class="gradient">می‌دونستم! 🥹</span>';
+$('desc').textContent='همین یه جواب کوچولو می‌تونه یه دنیا قشنگی بسازه. ❤️';
+$('hint').textContent='لبخند یادت نره! ✨';
+};
+</script>
+</body>
+  </html>
+  
